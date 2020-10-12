@@ -55,7 +55,7 @@
         <div class="row">
             <div class="col-sm bg-white">
 
-                <form action="mybooking.php" method="post">
+                <form action="">
                     <div class="form-group">
                         <label for="exampleInputPassword1">Name</label>
                         <input type="text" class="form-control" id="exampleInputPassword1" name="nama">

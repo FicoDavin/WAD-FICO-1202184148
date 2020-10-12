@@ -42,7 +42,7 @@
                 </div>
                 <div class="col-sm">
                 </div>
-                        </div>
+            </div>
         </div>
     </nav>
 
@@ -51,20 +51,20 @@
 <body>
 
     <?php
-          error_reporting(0);
-          $name = $_GET['name'];
-          $check =$_GET['check-in'];
-          $duration =$_GET['duration'];
-          $type = $_GET['type'];
-          $phone = $_GET['phone'];
-          $service_count = count($_GET['add']);
-      
-          $checkout =  date('m/d/y', strtotime($check . ' + ' . $_GET['duration'] . 'days'));
-      
-          $totalPrice = $service_count * 10;
+    error_reporting(0);
+    $name = $_GET['name'];
+    $check = $_GET['check-in'];
+    $duration = $_GET['duration'];
+    $type = $_GET['type'];
+    $phone = $_GET['phone'];
+    $service_count = count($_GET['add']);
+
+    $checkout =  date('m/d/y', strtotime($check . ' + ' . $_GET['duration'] . 'days'));
+
+    $totalPrice = $service_count * 10;
     ?>
 
-            
+
 
 
 
@@ -72,12 +72,12 @@
         <thead>
             <tr>
                 <th scope="col">booking Number</th>
-                 <th scope="col">Name</th>
+                <th scope="col">Name</th>
                 <th scope="col">Check-in</th>
                 <th scope="col">Check-out</th>
-                    <th scope="col">Room Type</th>
+                <th scope="col">Room Type</th>
                 <th scope="col">Phone Number</th>
-                   <th scope="col">service</th>
+                <th scope="col">service</th>
                 <th scope="col">Total Price</th>
             </tr>
         </thead>
@@ -85,19 +85,23 @@
         <tbody>
             <tr>
                 <td scope="row">1</td>
-                  <td><?php echo $_POST["nama"]; ?></td>
+                <td><?php echo $_POST("nama"); ?></td>
                 <td><?php echo $date_input; ?> </td>
-                  <td><?php echo $check; ?></td>
-                <td><?= $_POST['pilihan']; ?></td>
-                  <td><?php echo $_POST["hp"]; ?></td>
+                <td><?php echo $check; ?></td>
+                <td><?= $_POST('pilihan'); ?></td>
+                <td><?php echo $_POST("hp"); ?></td>
                 <td>
                     <ul>
-                    <li><?php if (isset($_POST["service"])) {echo "Room sevice";}  ?> </li>
-                    <li><?php if (isset($_POST["makan"])) {echo "BreakFast";}  ?> </li>
+                        <li><?php if ($_POST["service"]) {
+                                echo "Room sevice";
+                            }  ?> </li>
+                        <li><?php if ($_POST["makan"]) {
+                                echo "BreakFast";
+                            }  ?> </li>
                     </ul>
                 </td>
-                
-               <td> $<?php echo $total; ?>  </td>
+
+                <td> $<?php echo $total; ?> </td>
             </tr>
         </tbody>
     </table>
