@@ -15,7 +15,7 @@
         }
 
         // Masukkan data ke dalam variable
-        $name = $_POST['name'];
+        $nama = $_POST['name'];
         $deskripsi = $_POST['deskripsi'];
         $kategori = $_POST['kategori'];
         $tanggal = $_POST['tanggal'];
@@ -25,7 +25,7 @@
         $harga = $_POST['harga'];
 
         // Masukkan ke database
-        mysqli_query($conn, "INSERT INTO events VALUES (NULL, '$name', '$deskripsi', '$filename', '$kategori', '$tanggal', '$mulai', '$berakhir', '$tempat', '$harga', '$benefit')");
+        mysqli_query($connect, "INSERT INTO events VALUES ('$name', '$deskripsi', '$filename', '$kategori', '$tanggal', '$mulai', '$berakhir', '$tempat', '$harga', '$benefit')");
 
         if(mysqli_affected_rows($conn) > 0) {
             header("Location: home.php");
