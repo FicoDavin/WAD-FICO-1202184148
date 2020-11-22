@@ -1,24 +1,23 @@
- <?php 
-    
-    require 'functions.php';
+ <?php
 
-    if(isset($_POST['btn-login'])) {    
-    login($_POST);
+
+    if (isset($_POST['btn-login'])) {
+        login($_REQUEST);
         // cek cookie
-    
-    
-    
-      
-      $email = $_POST['email'];
-      $result = mysqli_query($conn, "SELECT * FROM users WHERE 
-      email = '$email'");
-      $row = mysqli_fetch_assoc($result);
-      $_SESSION['id'] = $row['id'];
-      $_SESSION['berhasil-login'] = true;
-    }
-    
 
-?>
+
+
+
+        $email = $_POST['email'];
+        $result = mysqli_query($conn, "SELECT * FROM users WHERE 
+      email = '$email'");
+        $row = mysqli_fetch_assoc($result);
+        $_SESSION['id'] = $row['id'];
+        $_COOKIE['berhasil-login'] = true;
+    }
+
+
+    ?>
 
  <!doctype html>
  <html lang="en">
@@ -33,8 +32,7 @@
 
      <!-- font -->
      <link rel="preconnect" href="https://fonts.gstatic.com">
-     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-         rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
      <!-- CSS -->
      <link rel="stylesheet" href="style.css">
      <title>Login</title>
@@ -58,8 +56,7 @@
  <body>
      <nav class="navbar navbar-expand-lg navbar-light bg-light">
          <a class="navbar-brand" href="#">WAD Beauty</a>
-         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
              <span class="navbar-toggler-icon"></span>
          </button>
          <div class="collapse navbar-collapse" id="navbarNav">
@@ -73,17 +70,17 @@
              </ul>
          </div>
      </nav>
-     <?php if(isset($_SESSION['success-login'])) : ?>
-     <div class="alert alert-warning" role="alert">
-         Berhasil Login!
-     </div>
-     <?php unset($_SESSION['success-login']); 
-     ?>
-     <?php elseif(isset($_SESSION['failed-login'])) : ?>
-     <div class="alert alert-warning" role="alert">
-         Gagal Login!
-     </div>
-     <?php session_destroy(); ?>
+     <?php if (isset($_SESSION['success-login'])) : ?>
+         <div class="alert alert-warning" role="alert">
+             Berhasil Login!
+         </div>
+         <?php unset($_SESSION['success-login']);
+            ?>
+     <?php elseif (isset($_SESSION['failed-login'])) : ?>
+         <div class="alert alert-warning" role="alert">
+             Gagal Login!
+         </div>
+         <?php session_destroy(); ?>
      <?php endif ?>
      <div class="container ">
          <div class="row">
@@ -96,33 +93,29 @@
                          <div class="row">
                              <div class="col-md-12">
                                  <form action="" method="POST">
-                                     <?php if( isset($_COOKIE['id']) && isset($_COOKIE['key']) ) : ?>
-                                     <div class="form-group">
-                                         <label for="email">Email
-                                         </label>
-                                         <input type="email" class="form-control" id="email" name="email" required
-                                             value="<?= $row['email']; ?>">
-                                     </div>
+                                     <?php if (isset($_COOKIE['id']) && isset($_COOKIE['key'])) : ?>
+                                         <div class="form-group">
+                                             <label for="email">Email
+                                             </label>
+                                             <input type="email" class="form-control" id="email" name="email" required value="<?= $row['email']; ?>">
+                                         </div>
 
-                                     <div class="form-group">
-                                         <label for="password">Kata Sandi</label>
-                                         <input type="password" class="form-control" id="password" name="password"
-                                             required value="<?= $row['password']; ?>">
-                                     </div>
+                                         <div class="form-group">
+                                             <label for="password">Kata Sandi</label>
+                                             <input type="password" class="form-control" id="password" name="password" required value="<?= $row['password']; ?>">
+                                         </div>
 
                                      <?php else : ?>
-                                     <div class="form-group">
-                                         <label for="email">Email
-                                         </label>
-                                         <input type="email" class="form-control" id="email" name="email" required
-                                             placeholder="Masukkan alamat e-mail">
-                                     </div>
+                                         <div class="form-group">
+                                             <label for="email">Email
+                                             </label>
+                                             <input type="email" class="form-control" id="email" name="email" required placeholder="Masukkan alamat e-mail">
+                                         </div>
 
-                                     <div class="form-group">
-                                         <label for="password">Kata Sandi</label>
-                                         <input type="password" class="form-control" id="password" name="password"
-                                             required placeholder="Buat Kata Sandi">
-                                     </div>
+                                         <div class="form-group">
+                                             <label for="password">Kata Sandi</label>
+                                             <input type="password" class="form-control" id="password" name="password" required placeholder="Buat Kata Sandi">
+                                         </div>
                                      <?php endif ?>
 
                                      <div class="form-group form-check">
