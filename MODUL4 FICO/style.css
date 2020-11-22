@@ -1,0 +1,30 @@
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+ul li {
+  margin-right: 20px;
+  font-weight: 400;
+}
+
+ul li .btn-home:hover {
+  color: black !important;
+}
+
+ul li .btn-login {
+  padding: 5px 15px;
+  border: 2px solid white;
+  border-radius: 4px;
+  color: white !important;
+}
+
+ul li .btn-login:hover {
+  color: black !important;
+  background-color: white;
+}
+
+.card-body .col {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+/*# sourceMappingURL=style.css.map */
